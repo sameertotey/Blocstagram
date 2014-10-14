@@ -37,6 +37,17 @@
     return self;
 }
 
+- (void) deleteMediaItem: (Media *)mediaItem {
+    NSUInteger index = [self.mediaItems indexOfObject:mediaItem];
+    if (index != NSNotFound) {
+        NSMutableArray *mutableCopyOfMediaItems = [[NSMutableArray alloc] init];
+        [mutableCopyOfMediaItems addObjectsFromArray:self.mediaItems];
+        [mutableCopyOfMediaItems removeObjectAtIndex:index];
+        self.mediaItems = mutableCopyOfMediaItems;
+    }
+}
+
+
 - (void) addRandomData {
     NSMutableArray *randomMediaItems = [NSMutableArray array];
     
