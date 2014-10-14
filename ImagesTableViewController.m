@@ -7,9 +7,12 @@
 //
 
 #import "ImagesTableViewController.h"
+#import "DataSouce.h"
+#import "User.h"
+#import "Media.h"
+#import "Comment.h"
 
 @interface ImagesTableViewController ()
-@property (nonatomic, strong) NSMutableArray *images;
 
 @end
 
@@ -18,7 +21,7 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.images = [NSMutableArray array];     // create the images array
+
     }
     
     return self;
@@ -33,14 +36,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    for (int indx = 0; indx < 10; indx++) {
-        NSString *imageName = [NSString stringWithFormat:@"%d.jpg", indx];
-        UIImage *image = [UIImage imageNamed:imageName];
-        if (image) {
-            [self.images addObject:image];
-        }
-    }
-    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"imageCell"];
 }
 
@@ -53,7 +48,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return self.images.count;
+    return [self items].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -75,13 +70,14 @@
         [cell.contentView addSubview:imageView];
     }
     
-    UIImage *image = self.images[indexPath.row];
-    imageView.image = image;
+    Media *item = [self items][indexPath.row];
+    imageView.image = item.image;
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIImage *image = self.images[indexPath.row];
+    Media *item = [self items][indexPath.row];
+    UIImage *image = item.image;
     return CGRectGetWidth(self.view.frame)/(image.size.width) * image.size.height;
 }
 
@@ -96,11 +92,15 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.images removeObjectAtIndex:indexPath.row];
+        // detete the row from the model here - maybe add a message to the datasource?
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
+}
+
+- (NSArray *)items {
+    return [DataSouce sharedInstance].mediaItems;
 }
 
 /*
