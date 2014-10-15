@@ -12,7 +12,9 @@
 #import "Comment.h"
 
 
-@interface DataSouce()
+@interface DataSouce() {
+    NSMutableArray *_mediaItems;
+}
 @property (nonatomic, strong, readwrite) NSArray *mediaItems;
 @end
 
@@ -38,15 +40,37 @@
 }
 
 - (void) deleteMediaItem: (Media *)mediaItem {
-    NSUInteger index = [self.mediaItems indexOfObject:mediaItem];
-    if (index != NSNotFound) {
-        NSMutableArray *mutableCopyOfMediaItems = [[NSMutableArray alloc] init];
-        [mutableCopyOfMediaItems addObjectsFromArray:self.mediaItems];
-        [mutableCopyOfMediaItems removeObjectAtIndex:index];
-        self.mediaItems = mutableCopyOfMediaItems;
-    }
+    NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
+    [mutableArrayWithKVO removeObject:mediaItem];
 }
 
+#pragma mark - Key/Value Observing
+
+- (NSUInteger) countOfMediaItems {
+    return self.mediaItems.count;
+}
+
+- (id) objectInMediaItemsAtIndex:(NSUInteger)index {
+    return [self.mediaItems objectAtIndex:index];
+}
+
+- (NSArray *) mediaItemsAtIndexes:(NSIndexSet *)indexes {
+    return [self.mediaItems objectsAtIndexes:indexes];
+}
+
+- (void) insertObject:(Media *)object inMediaItemsAtIndex:(NSUInteger)index {
+    [_mediaItems insertObject:object atIndex:index];
+}
+
+- (void) removeObjectFromMediaItemsAtIndex:(NSUInteger)index {
+    [_mediaItems removeObjectAtIndex:index];
+}
+
+- (void) replaceObjectInMediaItemsAtIndex:(NSUInteger)index withObject:(id)object {
+    [_mediaItems replaceObjectAtIndex:index withObject:object];
+}
+
+#pragma mark - Random Data Generation
 
 - (void) addRandomData {
     NSMutableArray *randomMediaItems = [NSMutableArray array];
