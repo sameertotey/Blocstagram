@@ -162,6 +162,15 @@
     [self infiniteScrollIfNecessary];
 }
 
+- (CGFloat) tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    Media *item = [self items][indexPath.row];
+    if (item.image) {
+        return 350;
+    } else {
+        return 100;
+    }
+}
+
 
 /*
 // Override to support rearranging the table view.
