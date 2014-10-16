@@ -10,12 +10,16 @@
 
 @class Media;
 
-@interface DataSouce : NSObject
+typedef void (^NewItemCompletionBlock)(NSError *error);
+@interface DataSource : NSObject
 
 @property (nonatomic, strong, readonly) NSArray *mediaItems;
 
 + (instancetype) sharedInstance;
 
 - (void) deleteMediaItem: (Media *)mediaItem;
+
+- (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler;
+- (void) requestOldItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler;
 
 @end

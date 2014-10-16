@@ -7,7 +7,7 @@
 //
 
 #import "ImagesTableViewController.h"
-#import "DataSouce.h"
+#import "DataSource.h"
 #import "User.h"
 #import "Media.h"
 #import "Comment.h"
@@ -37,12 +37,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    [[DataSouce sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
+    [[DataSource sharedInstance] addObserver:self forKeyPath:@"mediaItems" options:0 context:nil];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(refreshControlDidFire:) forControlEvents:UIControlEventValueChanged];
+    
     [self.tableView registerClass:[MediaTableViewCell class] forCellReuseIdentifier:@"mediaCell"];
 }
 
 - (void) dealloc {
-    [[DataSouce sharedInstance] removeObserver:self forKeyPath:@"mediaItems"];
+    [[DataSource sharedInstance] removeObserver:self forKeyPath:@"mediaItems"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,8 +56,14 @@
 
 #pragma mark - Table view data source
 
+- (void) refreshControlDidFire:(UIRefreshControl *) sender {
+    [[DataSource sharedInstance] requestNewItemsWithCompletionHandler:^(NSError *error) {
+        [sender endRefreshing];
+    }];
+}
+
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if (object == [DataSouce sharedInstance] && [keyPath isEqualToString:@"mediaItems"]) {
+    if (object == [DataSource sharedInstance] && [keyPath isEqualToString:@"mediaItems"]) {
         // We know mediaItems changed, lets find out what kind of change it is
         int kindOfChange = [change[NSKeyValueChangeKindKey] intValue];
         
@@ -121,15 +131,37 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [[DataSouce sharedInstance] deleteMediaItem:[self items][indexPath.row]];
+        [[DataSource sharedInstance] deleteMediaItem:[self items][indexPath.row]];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
     }   
 }
 
+#pragma mark - Misc
+
 - (NSArray *)items {
-    return [DataSouce sharedInstance].mediaItems;
+    return [DataSource sharedInstance].mediaItems;
 }
+
+- (void) infiniteScrollIfNecessary {
+    NSIndexPath *bottomIndexPath = [[self.tableView indexPathsForVisibleRows] lastObject];
+    
+    if (bottomIndexPath && bottomIndexPath. row == [self items].count -1) {
+        // The very last cell is on the screen
+        [[DataSource sharedInstance] requestOldItemsWithCompletionHandler:nil];
+    }
+}
+
+#pragma mark - UIScrollView delegate
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+//    [self infiniteScrollIfNecessary];
+    NSLog(@"scrollViewDidScroll");
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self infiniteScrollIfNecessary];
+}
+
 
 /*
 // Override to support rearranging the table view.

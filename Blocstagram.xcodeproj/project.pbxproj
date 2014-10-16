@@ -26,7 +26,7 @@
 		0522081B19EC910A00B4FDED /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522081A19EC910A00B4FDED /* User.m */; };
 		0522081E19EC929200B4FDED /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522081D19EC929200B4FDED /* Media.m */; };
 		0522082119EC940D00B4FDED /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082019EC940D00B4FDED /* Comment.m */; };
-		0522082419EC947C00B4FDED /* DataSouce.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082319EC947C00B4FDED /* DataSouce.m */; };
+		0522082419EC947C00B4FDED /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082319EC947C00B4FDED /* DataSource.m */; };
 		0522082A19ECDBBC00B4FDED /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082919ECDBBC00B4FDED /* MediaTableViewCell.m */; };
 /* End PBXBuildFile section */
 
@@ -69,8 +69,8 @@
 		0522081D19EC929200B4FDED /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Media.m; sourceTree = "<group>"; };
 		0522081F19EC940C00B4FDED /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		0522082019EC940D00B4FDED /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
-		0522082219EC947C00B4FDED /* DataSouce.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSouce.h; sourceTree = "<group>"; };
-		0522082319EC947C00B4FDED /* DataSouce.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSouce.m; sourceTree = "<group>"; };
+		0522082219EC947C00B4FDED /* DataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSource.h; sourceTree = "<group>"; };
+		0522082319EC947C00B4FDED /* DataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSource.m; sourceTree = "<group>"; };
 		0522082819ECDBBC00B4FDED /* MediaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaTableViewCell.h; sourceTree = "<group>"; };
 		0522082919ECDBBC00B4FDED /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -122,8 +122,8 @@
 				0522081C19EC929200B4FDED /* Media.h */,
 				0522081D19EC929200B4FDED /* Media.m */,
 				0522081F19EC940C00B4FDED /* Comment.h */,
-				0522082219EC947C00B4FDED /* DataSouce.h */,
-				0522082319EC947C00B4FDED /* DataSouce.m */,
+				0522082219EC947C00B4FDED /* DataSource.h */,
+				0522082319EC947C00B4FDED /* DataSource.m */,
 				0522082019EC940D00B4FDED /* Comment.m */,
 				0522081A19EC910A00B4FDED /* User.m */,
 				052207DF19EC377900B4FDED /* AppDelegate.h */,
@@ -293,7 +293,7 @@
 				0522082A19ECDBBC00B4FDED /* MediaTableViewCell.m in Sources */,
 				0522081E19EC929200B4FDED /* Media.m in Sources */,
 				0522081819EC3A0300B4FDED /* ImagesTableViewController.m in Sources */,
-				0522082419EC947C00B4FDED /* DataSouce.m in Sources */,
+				0522082419EC947C00B4FDED /* DataSource.m in Sources */,
 				052207E119EC377A00B4FDED /* AppDelegate.m in Sources */,
 				052207DE19EC377900B4FDED /* main.m in Sources */,
 			);
