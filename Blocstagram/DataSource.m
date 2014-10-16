@@ -89,13 +89,18 @@
 }
 
 - (void) requestNewItemsWithCompletionHandler:(NewItemCompletionBlock)completionHandler {
-    self.thereAreNoMoreOlderMessages = NO;
+    self.thereAreNoMoreOlderMessages = NO;  // restart infinite scroll after a pull-to-refresh
     
     if (self.isRefreshing == NO) {
         self.isRefreshing = YES;
 
         NSString *minID =   [[self.mediaItems firstObject] idNumber];
-        NSDictionary *parameters = @{@"min_id": minID};
+        NSDictionary *parameters;
+        if (minID) {
+            parameters = @{@"min_id": minID};
+        } else {
+            parameters = @{};
+        }
         
         [self populateDataWithParameters:parameters completionHander:^(NSError *error) {
             self.isRefreshing = NO;
