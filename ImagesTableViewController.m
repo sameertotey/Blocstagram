@@ -155,7 +155,7 @@
 #pragma mark - UIScrollView delegate
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
 //    [self infiniteScrollIfNecessary];
-    NSLog(@"scrollViewDidScroll");
+//    NSLog(@"scrollViewDidScroll");
 }
 
 - (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
