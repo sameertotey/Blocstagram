@@ -45,7 +45,7 @@
     self = [super init];
     
     if (self) {
-        self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
+//        self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
         if (!self.accessToken) {
             [self registerForAccessTokenNotification];
         } else {
@@ -195,7 +195,7 @@
 }
 
 - (void) parseDataFromFeedDictionary:(NSDictionary *) feedDictionary fromRequestWithParameters:(NSDictionary *)parameters {
-    NSLog(@"%@", feedDictionary);
+//    NSLog(@"%@", feedDictionary);
     NSArray *mediaArray = feedDictionary[@"data"];
     
     NSMutableArray *tmpMediaItems = [NSMutableArray array];
@@ -204,8 +204,8 @@
         Media *mediaItem = [[Media alloc] initWithDictionary:mediaDictionary];
         
         if (mediaItem) {
-            [tmpMediaItems addObject:mediaItem];
             [self downloadImageForMediaItem:mediaItem];
+            [tmpMediaItems addObject:mediaItem];
         }
     }
     
@@ -241,7 +241,7 @@
             NSError *dataError;
             BOOL wroteSuccessfully = [mediaItemData writeToFile:fullPath options:NSDataWritingAtomic | NSDataWritingFileProtectionCompleteUnlessOpen error:&dataError];
             
-            if (wroteSuccessfully) {
+            if (!wroteSuccessfully) {
                 NSLog(@"Couldn't write file: %@", dataError);
             }
         });
