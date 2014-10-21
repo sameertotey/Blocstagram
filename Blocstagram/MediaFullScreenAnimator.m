@@ -23,7 +23,7 @@
         MediaFullScreenViewController *fullScreenVC = (MediaFullScreenViewController *)toViewController;
         fromViewController.view.userInteractionEnabled = NO;
         
-        [transitionContext.containerView addSubview:fromViewController.view];
+        //[transitionContext.containerView addSubview:fromViewController.view];
         [transitionContext.containerView addSubview:toViewController.view];
         
         CGRect startFrame = [transitionContext.containerView convertRect:self.cellImageView.bounds fromView:self.cellImageView];
@@ -41,9 +41,9 @@
             [transitionContext completeTransition:YES];
         }];
     } else {
-        [transitionContext.containerView addSubview:toViewController.view];
-        [transitionContext.containerView addSubview:fromViewController.view];
-        
+//        [transitionContext.containerView addSubview:toViewController.view];
+//        [transitionContext.containerView addSubview:fromViewController.view];
+//        
         MediaFullScreenViewController *fullScreenVC = (MediaFullScreenViewController *)fromViewController;
         
         CGRect endFrame = [transitionContext.containerView convertRect:self.cellImageView.bounds fromView:self.cellImageView];
