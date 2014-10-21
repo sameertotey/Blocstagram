@@ -52,14 +52,12 @@
         self.instagramOperationManager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
 
         
-        AFJSONRequestSerializer *jsonSerializer = [[AFJSONRequestSerializer alloc] init];
-        [jsonSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+        AFJSONResponseSerializer *jsonSerializer = [[AFJSONResponseSerializer alloc] init];
         AFImageResponseSerializer *imageSerializer = [[AFImageResponseSerializer alloc] init];
         imageSerializer.imageScale = 1.0;
         
         AFCompoundResponseSerializer *compoundSerializer = [AFCompoundResponseSerializer compoundSerializerWithResponseSerializers:@[jsonSerializer, imageSerializer]];
         self.instagramOperationManager.responseSerializer = compoundSerializer;
-                [self.instagramOperationManager.requestSerializer setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
         
         self.accessToken = [UICKeyChainStore stringForKey:@"access token"];
         if (!self.accessToken) {
@@ -72,7 +70,8 @@
                     if (storedMediaItem.count > 0) {
                         NSMutableArray *mutableMediaItems = [storedMediaItem mutableCopy];
                         
-                        for (Media* item in self.mediaItems)
+                        // download the images if the URL exists and image is nil
+                        for (Media* item in mutableMediaItems)
                         {
                             [self downloadImageForMediaItem:item];
                         }
@@ -85,8 +84,6 @@
                     } else {
                         [self populateDataWithParameters:nil completionHander:nil];
                     }
-                    //[self populateDataWithParameters:nil completionHander:nil];
-
                 });
             });
             
@@ -199,7 +196,6 @@
 }
 
 - (void) parseDataFromFeedDictionary:(NSDictionary *) feedDictionary fromRequestWithParameters:(NSDictionary *)parameters {
-//    NSLog(@"%@", feedDictionary);
     NSArray *mediaArray = feedDictionary[@"data"];
     
     NSMutableArray *tmpMediaItems = [NSMutableArray array];

@@ -183,10 +183,7 @@
     fullScreenVC.transitioningDelegate = self;
     fullScreenVC.modalPresentationStyle = UIModalPresentationCustom;
 
-    [self presentViewController:fullScreenVC animated:YES completion:^{
-        NSLog(@"Completed presenting the full screen view modally...\n");
-    }];
-    
+    [self presentViewController:fullScreenVC animated:YES completion:nil];
 }
 
 - (void)cell:(MediaTableViewCell *)cell  didLongPressImageView:(UIImageView *)imageView {

@@ -113,9 +113,7 @@
 #pragma mark - Gesture Recognizers
 
 - (void)tapFired:(UIGestureRecognizer *)sender {
-    [self dismissViewControllerAnimated:YES completion:^{
-        NSLog(@"Did dismisss the full screen image....\n");
-    }];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)doubleTapFired:(UIGestureRecognizer *)sender {
