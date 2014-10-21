@@ -70,12 +70,6 @@
                     if (storedMediaItem.count > 0) {
                         NSMutableArray *mutableMediaItems = [storedMediaItem mutableCopy];
                         
-                        // download the images if the URL exists and image is nil
-                        for (Media* item in mutableMediaItems)
-                        {
-                            [self downloadImageForMediaItem:item];
-                        }
-                        
                         [self willChangeValueForKey:@"mediaItems"];
                         self.mediaItems = mutableMediaItems;
                         [self didChangeValueForKey:@"mediaItems"];
@@ -204,8 +198,8 @@
         Media *mediaItem = [[Media alloc] initWithDictionary:mediaDictionary];
         
         if (mediaItem) {
-            [self downloadImageForMediaItem:mediaItem];
             [tmpMediaItems addObject:mediaItem];
+            [self downloadImageForMediaItem:mediaItem];
         }
     }
     
@@ -250,18 +244,39 @@
 
 - (void) downloadImageForMediaItem:(Media *)mediaItem {
     if (mediaItem.mediaURL && !mediaItem.image) {
+        mediaItem.downloadState = MediaDownloadStateDownloadInProgress;
         
         [self.instagramOperationManager GET:mediaItem.mediaURL.absoluteString
                                  parameters:nil
                                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
                                         if ([responseObject isKindOfClass:[UIImage class]]) {
                                             mediaItem.image = responseObject;
+                                            mediaItem.downloadState = MediaDownloadStateHasImage;
                                             NSMutableArray *mutableArrayWithKVO = [self mutableArrayValueForKey:@"mediaItems"];
                                             NSUInteger index = [mutableArrayWithKVO indexOfObject:mediaItem];
                                             [mutableArrayWithKVO replaceObjectAtIndex:index withObject:mediaItem];
+                                        } else {
+                                            mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
                                         }
                                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                         NSLog(@"Error downloading image: %@", error);
+                                        mediaItem.downloadState = MediaDownloadStateNonRecoverableError;
+                                        
+                                        if ([error.domain isEqualToString:NSURLErrorDomain]) {
+                                            // A networking problem
+                                            if (error.code == NSURLErrorTimedOut ||
+                                                error.code == NSURLErrorCancelled ||
+                                                error.code == NSURLErrorCannotConnectToHost ||
+                                                error.code == NSURLErrorNetworkConnectionLost ||
+                                                error.code == NSURLErrorNotConnectedToInternet ||
+                                                error.code == NSURLErrorInternationalRoamingOff ||
+                                                error.code == NSURLErrorCallIsActive ||
+                                                error.code == NSURLErrorDataNotAllowed ||
+                                                error.code == NSURLErrorRequestBodyStreamExhausted) {
+                                                // It might work if we try again
+                                                mediaItem.downloadState = MediaDownloadStateNeedsImage;
+                                            }
+                                        }
                                     }];
     }
 }
