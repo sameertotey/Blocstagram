@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		026C20874F5805A166199C6F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD3EE7A317002691D11F516 /* libPods.a */; };
+		0505BF1919F71B830030283D /* CircleSpinnerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505BF1819F71B830030283D /* CircleSpinnerView.m */; };
+		0505BF1C19F7415C0030283D /* LikeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0505BF1B19F7415C0030283D /* LikeButton.m */; };
 		050BAAEB19F2C01C00500DEE /* MediaFullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 050BAAEA19F2C01C00500DEE /* MediaFullScreenViewController.m */; };
 		050BAAEE19F2D61700500DEE /* MediaFullScreenAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 050BAAED19F2D61700500DEE /* MediaFullScreenAnimator.m */; };
 		052207DE19EC377900B4FDED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 052207DD19EC377900B4FDED /* main.m */; };
@@ -45,6 +47,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0505BF1719F71B830030283D /* CircleSpinnerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleSpinnerView.h; sourceTree = "<group>"; };
+		0505BF1819F71B830030283D /* CircleSpinnerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleSpinnerView.m; sourceTree = "<group>"; };
+		0505BF1A19F7415C0030283D /* LikeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LikeButton.h; sourceTree = "<group>"; };
+		0505BF1B19F7415C0030283D /* LikeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LikeButton.m; sourceTree = "<group>"; };
 		050BAAE919F2C01C00500DEE /* MediaFullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenViewController.h; sourceTree = "<group>"; };
 		050BAAEA19F2C01C00500DEE /* MediaFullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaFullScreenViewController.m; sourceTree = "<group>"; };
 		050BAAEC19F2D61700500DEE /* MediaFullScreenAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaFullScreenAnimator.h; sourceTree = "<group>"; };
@@ -138,6 +144,10 @@
 				0522081719EC3A0300B4FDED /* ImagesTableViewController.m */,
 				050BAAEC19F2D61700500DEE /* MediaFullScreenAnimator.h */,
 				050BAAED19F2D61700500DEE /* MediaFullScreenAnimator.m */,
+				0505BF1719F71B830030283D /* CircleSpinnerView.h */,
+				0505BF1819F71B830030283D /* CircleSpinnerView.m */,
+				0505BF1A19F7415C0030283D /* LikeButton.h */,
+				0505BF1B19F7415C0030283D /* LikeButton.m */,
 				0522081919EC910A00B4FDED /* User.h */,
 				0522081A19EC910A00B4FDED /* User.m */,
 				0522081C19EC929200B4FDED /* Media.h */,
@@ -372,6 +382,8 @@
 				0522082D19EF4D1000B4FDED /* LoginViewController.m in Sources */,
 				0522082419EC947C00B4FDED /* DataSource.m in Sources */,
 				052207E119EC377A00B4FDED /* AppDelegate.m in Sources */,
+				0505BF1C19F7415C0030283D /* LikeButton.m in Sources */,
+				0505BF1919F71B830030283D /* CircleSpinnerView.m in Sources */,
 				052207DE19EC377900B4FDED /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
