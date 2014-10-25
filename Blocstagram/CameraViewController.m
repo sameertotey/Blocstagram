@@ -90,7 +90,7 @@
                 
                 NSError *error = nil;
                 AVCaptureDeviceInput *input = [AVCaptureDeviceInput deviceInputWithDevice:device error:&error];
-                if (input) {
+                if (!input) {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:error.localizedDescription
                                                                     message:error.localizedRecoverySuggestion
                                                                    delegate:self
@@ -167,7 +167,7 @@
         UIView *horizontalLine = self.horizontalLines[i];
         UIView *verticalLine = self.verticalLines[i];
         
-        horizontalLine.frame = CGRectMake(0, (i * thirdOfWidth) + CGRectGetMaxY(self.topView.frame), 0.5, width);
+        horizontalLine.frame = CGRectMake(0, (i * thirdOfWidth) + CGRectGetMaxY(self.topView.frame), width, 0.5);
         CGRect verticalFrame = CGRectMake(i * thirdOfWidth, CGRectGetMaxY(self.topView.frame), 0.5, width);
         
         if (i == 3) {
