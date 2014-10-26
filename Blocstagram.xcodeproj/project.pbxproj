@@ -38,6 +38,9 @@
 		0522082419EC947C00B4FDED /* DataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082319EC947C00B4FDED /* DataSource.m */; };
 		0522082A19ECDBBC00B4FDED /* MediaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082919ECDBBC00B4FDED /* MediaTableViewCell.m */; };
 		0522082D19EF4D1000B4FDED /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0522082C19EF4D1000B4FDED /* LoginViewController.m */; };
+		0528F57119FD653C00BA1EC3 /* ImageLibraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0528F57019FD653C00BA1EC3 /* ImageLibraryViewController.m */; };
+		052DDC9419FC6BDB0045C8CD /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DDC9319FC6BDB0045C8CD /* CropBox.m */; };
+		052DDC9719FC76030045C8CD /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DDC9619FC76030045C8CD /* CropImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +104,12 @@
 		0522082919ECDBBC00B4FDED /* MediaTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaTableViewCell.m; sourceTree = "<group>"; };
 		0522082B19EF4D1000B4FDED /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0522082C19EF4D1000B4FDED /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		0528F56F19FD653C00BA1EC3 /* ImageLibraryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageLibraryViewController.h; sourceTree = "<group>"; };
+		0528F57019FD653C00BA1EC3 /* ImageLibraryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageLibraryViewController.m; sourceTree = "<group>"; };
+		052DDC9219FC6BDB0045C8CD /* CropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropBox.h; sourceTree = "<group>"; };
+		052DDC9319FC6BDB0045C8CD /* CropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropBox.m; sourceTree = "<group>"; };
+		052DDC9519FC76030045C8CD /* CropImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CropImageViewController.h; sourceTree = "<group>"; };
+		052DDC9619FC76030045C8CD /* CropImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CropImageViewController.m; sourceTree = "<group>"; };
 		4BD3EE7A317002691D11F516 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF024E8E394B73DB1B248F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2B241EE4422E61BD5BD3C40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +157,12 @@
 		052207DA19EC377900B4FDED /* Blocstagram */ = {
 			isa = PBXGroup;
 			children = (
+				052DDC9219FC6BDB0045C8CD /* CropBox.h */,
+				052DDC9319FC6BDB0045C8CD /* CropBox.m */,
+				052DDC9519FC76030045C8CD /* CropImageViewController.h */,
+				052DDC9619FC76030045C8CD /* CropImageViewController.m */,
+				0528F56F19FD653C00BA1EC3 /* ImageLibraryViewController.h */,
+				0528F57019FD653C00BA1EC3 /* ImageLibraryViewController.m */,
 				0505BF2619F97C550030283D /* UIImage+ImageUtilities.h */,
 				0505BF2719F97C550030283D /* UIImage+ImageUtilities.m */,
 				0505BF1D19F8246D0030283D /* ComposeCommentView.h */,
@@ -394,17 +409,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				050BAAEB19F2C01C00500DEE /* MediaFullScreenViewController.m in Sources */,
+				052DDC9719FC76030045C8CD /* CropImageViewController.m in Sources */,
 				0522081B19EC910A00B4FDED /* User.m in Sources */,
 				0522082119EC940D00B4FDED /* Comment.m in Sources */,
 				0522082A19ECDBBC00B4FDED /* MediaTableViewCell.m in Sources */,
 				050BAAEE19F2D61700500DEE /* MediaFullScreenAnimator.m in Sources */,
 				0522081E19EC929200B4FDED /* Media.m in Sources */,
 				0505BF2219F89EC10030283D /* CameraToolbar.m in Sources */,
+				052DDC9419FC6BDB0045C8CD /* CropBox.m in Sources */,
 				0522081819EC3A0300B4FDED /* ImagesTableViewController.m in Sources */,
 				0522082D19EF4D1000B4FDED /* LoginViewController.m in Sources */,
 				0505BF2519F8C3BE0030283D /* CameraViewController.m in Sources */,
 				0522082419EC947C00B4FDED /* DataSource.m in Sources */,
 				052207E119EC377A00B4FDED /* AppDelegate.m in Sources */,
+				0528F57119FD653C00BA1EC3 /* ImageLibraryViewController.m in Sources */,
 				0505BF1C19F7415C0030283D /* LikeButton.m in Sources */,
 				0505BF2819F97C550030283D /* UIImage+ImageUtilities.m in Sources */,
 				0505BF1F19F8246D0030283D /* ComposeCommentView.m in Sources */,
