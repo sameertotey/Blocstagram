@@ -42,6 +42,8 @@
 		052DDC9419FC6BDB0045C8CD /* CropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DDC9319FC6BDB0045C8CD /* CropBox.m */; };
 		052DDC9719FC76030045C8CD /* CropImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 052DDC9619FC76030045C8CD /* CropImageViewController.m */; };
 		05CDD4BC19FDBF3B00A0F057 /* PostToInstagramViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CDD4BB19FDBF3B00A0F057 /* PostToInstagramViewController.m */; };
+		05CDD4BF19FF1CF200A0F057 /* UserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CDD4BE19FF1CF200A0F057 /* UserTests.m */; };
+		05CDD4C119FF244600A0F057 /* CommentsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 05CDD4C019FF244600A0F057 /* CommentsTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +116,8 @@
 		05CDD4BA19FDBF3B00A0F057 /* PostToInstagramViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToInstagramViewController.h; sourceTree = "<group>"; };
 		05CDD4BB19FDBF3B00A0F057 /* PostToInstagramViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToInstagramViewController.m; sourceTree = "<group>"; };
 		05CDD4BD19FED73600A0F057 /* Blocstagram-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Blocstagram-Prefix.pch"; sourceTree = "<group>"; };
+		05CDD4BE19FF1CF200A0F057 /* UserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTests.m; sourceTree = "<group>"; };
+		05CDD4C019FF244600A0F057 /* CommentsTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTest.m; sourceTree = "<group>"; };
 		4BD3EE7A317002691D11F516 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADF024E8E394B73DB1B248F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		F2B241EE4422E61BD5BD3C40 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -222,6 +226,8 @@
 		052207F419EC377A00B4FDED /* BlocstagramTests */ = {
 			isa = PBXGroup;
 			children = (
+				05CDD4C019FF244600A0F057 /* CommentsTest.m */,
+				05CDD4BE19FF1CF200A0F057 /* UserTests.m */,
 				052207F719EC377A00B4FDED /* BlocstagramTests.m */,
 				052207F519EC377A00B4FDED /* Supporting Files */,
 			);
@@ -443,7 +449,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05CDD4BF19FF1CF200A0F057 /* UserTests.m in Sources */,
 				052207F819EC377A00B4FDED /* BlocstagramTests.m in Sources */,
+				05CDD4C119FF244600A0F057 /* CommentsTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
