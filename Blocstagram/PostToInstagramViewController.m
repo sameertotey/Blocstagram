@@ -7,6 +7,7 @@
 //
 
 #import "PostToInstagramViewController.h"
+#import "DataSource.h"
 
 @interface PostToInstagramViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UIAlertViewDelegate, UIDocumentInteractionControllerDelegate>
 @property (nonatomic, strong) UIImage *sourceImage;
@@ -20,6 +21,9 @@
 
 @property (nonatomic, strong) UIButton *sendButton;
 @property (nonatomic, strong) UIBarButtonItem *sendBarButton;
+
+@property (nonatomic, strong) UIDocumentInteractionController *documentController;
+
 @end
 
 @implementation PostToInstagramViewController
@@ -348,21 +352,21 @@
             return;
         }
         
-        UIDocumentInteractionController *documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
-        documentController.UTI = @"com.instagram.exclusivegram";
+        self.documentController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
+        self.documentController.UTI = @"com.instagram.exclusivegram";
         
-        documentController.delegate = self;
+        self.documentController.delegate = self;
         
         NSString *caption =[alertView textFieldAtIndex:0].text;
         
         if (caption.length > 0) {
-            documentController.annotation = @{@"InstagramCaption": caption};
+            self.documentController.annotation = @{@"InstagramCaption": caption};
         }
         
         if (self.sendButton.superview) {
-            [documentController presentOpenInMenuFromRect:self.sendButton.bounds inView:self.sendButton animated:YES];
+            [self.documentController presentOpenInMenuFromRect:self.sendButton.bounds inView:self.sendButton animated:YES];
         } else {
-            [documentController presentOptionsMenuFromBarButtonItem:self.sendBarButton animated:YES];
+            [self.documentController presentOptionsMenuFromBarButtonItem:self.sendBarButton animated:YES];
         }
     }
 }
@@ -370,7 +374,7 @@
 #pragma mark - DocumentInteractionControllerDelegate
 
 - (void)documentInteractionController:(UIDocumentInteractionController *)controller didEndSendingToApplication:(NSString *)application {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ImageFinishedNotification object:self];
 }
 
 @end
