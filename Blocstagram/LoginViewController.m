@@ -86,7 +86,8 @@ NSString *const LoginViewControllerDidGetAccessTokenNotification = @"LoginViewCo
 
 - (void) enableBack {
     if (!self.navigationItem.leftBarButtonItem) {
-        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"Back command") style:UIBarButtonItemStylePlain target:self.webView action:@selector(goBack)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Back", @"Back command")
+                                                                                 style:UIBarButtonItemStylePlain target:self.webView action:@selector(goBack)];
     }
     self.navigationItem.leftBarButtonItem.enabled = YES;
 }

@@ -76,6 +76,8 @@ NSString *const ImageFinishedNotification = @"ImageFinishedNotification";
                         self.mediaItems = mutableMediaItems;
                         [self didChangeValueForKey:@"mediaItems"];
                         
+                        // send a refresh request here
+                        [self requestNewItemsWithCompletionHandler:nil];
                         
                     } else {
                         [self populateDataWithParameters:nil completionHander:nil];
